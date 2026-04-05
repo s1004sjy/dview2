@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light" style=""><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성균관대학교 첨단디스플레이공학과 계간지 창간호</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+KR:wght@400;700&amp;display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary: #0057b8;
+        --secondary: #00a8e0;
+        --accent: #00c8ff;
+        --dark-text: #002147;
+        --light-bg: #f5f7fa;
+        --white: #ffffff;
+        --border: #c0d8f0;
+        --font-serif: 'Playfair Display', serif;
+        --font-sans: 'Inter', sans-serif;
+        --font-kr: 'Noto Serif KR', serif;
+      }
+      body { 
+        max-width: 100% !important; 
+        margin: 0 !important; 
+        padding: 0 !important; 
+        background-color: #f0f4f8; 
+        background-image: radial-gradient(rgba(0, 87, 184, 0.25) 2px, transparent 2px);
+        background-size: 40px 40px; 
+        color: #333; 
+        font-family: var(--font-sans); 
+        overflow-x: hidden; 
+      }
+      .cover-section { 
+        background: transparent; 
+        min-height: 100vh; 
+        display: flex; 
+        flex-direction: column; 
+        position: relative; 
+      }
+      .sticky-nav { position: sticky; top: 0; background: rgba(255,255,255,0.95); border-bottom: 1px solid var(--border); padding: 1rem 2rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); }
+      .nav-links a { color: var(--primary); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
+      .progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: var(--accent); width: 0%; z-index: 1001; transition: width 0.2s; }
+      .cover-section { background: var(--white); min-height: 100vh; display: flex; flex-direction: column; position: relative; }
+      .institutional-bar { background: var(--primary); color: var(--white); padding: 1.2rem 4rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 3px solid var(--secondary); }
+      .inst-bar-left { display: flex; align-items: center; gap: 1rem; }
+      .inst-logo-box { width: 36px; height: 36px; background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 900; color: var(--primary); letter-spacing: 0; flex-shrink: 0; border-radius: 2px; }
+      .inst-bar-right { display: flex; align-items: center; gap: 2rem; }
+      .inst-badge { background: var(--secondary); color: var(--white); padding: 0.3rem 0.8rem; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.05em; border-radius: 2px; }
+      .cover-grid { display: grid; grid-template-columns: 1.4fr 1fr; flex-grow: 1; min-height: calc(100vh - 170px); }
+      .cover-left { padding: 3.5rem 4rem 2rem 4rem; display: flex; flex-direction: column; justify-content: center; background: var(--white); position: relative; border-right: 1px solid var(--border); }
+      .cover-top-rule { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+      .cover-top-rule .rule-emblem { width: 52px; height: 52px; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .rule-emblem span { color: white; font-size: 0.58rem; font-weight: 900; text-align: center; letter-spacing: 0; line-height: 1.2; }
+      .rule-lines { flex: 1; }
+      .rule-line-top { height: 3px; background: var(--primary); margin-bottom: 3px; }
+      .rule-line-bot { height: 1px; background: var(--secondary); }
+      .masthead { font-family: var(--font-serif); font-size: 4.2rem; line-height: 1; color: var(--dark-text); margin-bottom: 0.5rem; font-weight: 900; letter-spacing: -0.02em; }
+      .masthead-kr { font-family: var(--font-kr); font-size: 1.6rem; font-weight: 700; color: var(--primary); margin-bottom: 0.8rem; letter-spacing: 0.05em; }
+      .sub-masthead { font-size: 0.85rem; color: #666; margin-bottom: 0.3rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+      .issue-info { font-size: 0.92rem; color: var(--primary); font-weight: 800; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.06em; }
+      .view-btn { display: inline-block; background: var(--primary); color: var(--white); padding: 0.9rem 2.2rem; text-decoration: none; font-weight: 700; margin-bottom: 2.5rem; width: fit-content; transition: background 0.2s; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; }
+      .view-btn:hover { background: var(--secondary); }
+      .lead-story-box { background: #e8f4fd; padding: 2.5rem; border-left: 6px solid var(--secondary); }
+      .lead-label { color: var(--secondary); font-weight: 800; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.5rem; }
+      .lead-title { font-family: var(--font-kr); font-size: 2rem; font-weight: 700; color: var(--dark-text); margin-bottom: 1rem; line-height: 1.3; }
+      .lead-summary { font-size: 1.1rem; line-height: 1.6; color: #444; }
+      .cover-right { background: #ddeeff; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 0; align-content: flex-start; border-left: none; }
+      .cover-right-header { font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary); margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--primary); }
+      .research-card { background: var(--white); padding: 1.4rem 1.6rem; display: flex; flex-direction: row; align-items: flex-start; gap: 1.2rem; border-left: none; border-bottom: 1px solid #c5daf0; box-shadow: none; transition: background 0.15s; }
+      .research-card:last-child { border-bottom: none; }
+      .research-card:hover { background: #f0f8ff; }
+      .card-icon { font-size: 0.72rem; font-weight: 900; color: var(--white); background: var(--primary); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 2px; margin-top: 2px; letter-spacing: 0; }
+      .card-title { font-weight: 700; font-size: 0.95rem; color: var(--dark-text); line-height: 1.45; }
+      .card-sub { font-size: 0.78rem; color: var(--secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+      .cover-strip { background: var(--primary); padding: 1.4rem 4rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 3px solid var(--secondary); }
+      .strip-item { border-right: 1px solid rgba(255,255,255,0.25); padding: 0 2rem 0 0; margin-right: 2rem; }
+      .strip-item:last-child { border-right: none; margin-right: 0; }
+      .strip-label { color: rgba(255,255,255,0.75); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+      .strip-text { font-size: 0.92rem; font-weight: 700; color: var(--white); line-height: 1.3; }
+      .section-wrapper { background: var(--white); border-top: 1px solid var(--border); }
+      .section-wrapper:nth-child(even) { background: var(--light-bg); }
+      .section-container { max-width: 1200px; margin: 0 auto; padding: 5rem 3rem; }
+      .section-banner { background: var(--primary); color: var(--white); padding: 1.8rem 3rem; }
+      .section-banner-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: baseline; gap: 1.5rem; }
+      .section-number { font-size: 0.78rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+      .section-title { font-size: 1.6rem; font-weight: 700; font-family: var(--font-serif); color: var(--white); letter-spacing: 0.01em; }
+      .section-rule { flex: 1; height: 1px; background: rgba(255,255,255,0.25); }
+      .section-header { background: var(--primary); color: var(--white); padding: 0.7rem 1.5rem; display: inline-block; font-weight: 800; text-transform: uppercase; margin-bottom: 2.5rem; font-size: 0.82rem; letter-spacing: 0.1em; border-radius: 1px; }
+      .content-grid { display: grid; gap: 4rem; }
+      .col-2 { grid-template-columns: 1fr 1fr; }
+      .col-3 { grid-template-columns: repeat(3, 1fr); }
+      .col-4 { grid-template-columns: repeat(4, 1fr); }
+      .message-box { background: var(--white); padding: 3rem; border: 1px solid var(--border); position: relative; }
+      .quote-mark { font-size: 6rem; color: var(--secondary); opacity: 0.2; position: absolute; top: 1rem; left: 2rem; font-family: serif; }
+      .profile-card { background: #f8fbff; padding: 2rem; border-left: 4px solid var(--primary); }
+      .dean-message { text-align: center; max-width: 800px; margin: 0 auto; padding: 4rem; background: var(--white); border: 1px solid #ddd; position: relative; }
+      .dean-message::before, .dean-message::after { content: ''; display: block; width: 60px; height: 2px; background: var(--secondary); margin: 2rem auto; }
+      .prof-card { background: var(--white); border: 1px solid var(--border); padding: 1.5rem; transition: transform 0.2s; }
+      .prof-name { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; border-bottom: 2px solid var(--secondary); padding-bottom: 0.5rem; display: inline-block; }
+      .prof-info { font-size: 0.9rem; color: #555; margin-bottom: 0.3rem; }
+      .prof-tag { display: inline-block; background: #e8f4fd; color: var(--primary); padding: 0.2rem 0.5rem; font-size: 0.75rem; border-radius: 4px; margin-top: 0.5rem; margin-right: 0.3rem; }
+      .lab-card { background: var(--white); border: 1px solid var(--border); border-top: 4px solid var(--secondary); padding: 2.5rem; }
+      .lab-title { font-size: 1.5rem; font-weight: 700; color: var(--dark-text); margin-bottom: 1rem; }
+      .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 4rem; }
+      .stat-item { text-align: center; padding: 2rem; background: var(--white); border: 1px solid var(--border); }
+      .stat-number { font-size: 3rem; font-weight: 900; color: var(--primary); display: block; margin-bottom: 0.5rem; }
+      .hero-paper { background: var(--white); border: 1px solid var(--border); display: grid; grid-template-columns: 2fr 1fr; }
+      .paper-main { padding: 3rem; border-right: 1px solid var(--border); }
+      .paper-rail { padding: 2rem; background: #fcfcfc; }
+      .rail-item { margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
+      .news-card { background: var(--white); border: 1px solid var(--border); padding: 1.5rem; border-left: 3px solid var(--secondary); }
+      .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+      .timeline-item { display: grid; grid-template-columns: 100px 1fr; gap: 2rem; margin-bottom: 3rem; position: relative; }
+      .timeline-date { font-weight: 700; color: var(--secondary); text-align: right; }
+      .timeline-content { background: var(--white); padding: 1.5rem; border: 1px solid var(--border); }
+      .contact-outer { background: #e8f4fd; border-top: 4px solid var(--primary); }
+      .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; background: transparent; color: var(--dark-text); padding: 4rem 3rem; max-width: 1200px; margin: 0 auto; }
+      .contact-info h3 { color: var(--primary); margin-bottom: 1.5rem; font-family: var(--font-serif); font-size: 1.4rem; border-bottom: 2px solid var(--border); padding-bottom: 0.8rem; }
+      .contact-list p { margin-bottom: 0.8rem; display: flex; align-items: center; color: #333; }
+      .contact-footer { background: var(--primary); color: rgba(255,255,255,0.8); text-align: center; padding: 1.2rem 2rem; font-size: 0.85rem; letter-spacing: 0.04em; }
+      @media (max-width: 768px) {
+        .cover-grid, .content-grid, .col-2, .col-3, .col-4, .stat-grid, .hero-paper, .contact-grid { grid-template-columns: 1fr !important; }
+        .cover-strip { grid-template-columns: 1fr !important; gap: 1rem; }
+        .strip-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+        .sticky-nav { flex-direction: column; gap: 1rem; }
+        .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+        .nav-links a { margin: 0; }
+        .masthead { font-size: 3rem; }
+        #sec4 { grid-template-columns: 1fr !important; padding: 1.5rem 1rem !important; }
+        .section-container { padding: 2rem 1rem !important; }
+        .contact-grid { padding: 2rem 1rem !important; gap: 2rem !important; }
+        .timeline-item { grid-template-columns: 80px 1fr !important; gap: 1rem !important; }
+        .institutional-bar { flex-direction: column !important; gap: 0.5rem !important; text-align: center !important; padding: 1rem !important; }
+        .inst-bar-right { justify-content: center !important; }
+        p, td, li, div { word-break: keep-all; overflow-wrap: break-word; }
+      }
+      @media print {
+        .sticky-nav, .progress-bar, .view-btn { display: none; }
+        body { background: white; }
+        .section-container { page-break-before: always; padding: 2rem 0; }
+        .cover-section { page-break-after: always; min-height: auto; }
+      }
+    </style>
+  </head>
+  <body style="">
+    <div class="progress-bar" id="progressBar"></div>
+    <nav class="sticky-nav">
+<div onclick="window.scrollTo(0, 0)" style="cursor: pointer; font-weight: 900; color: var(--dark-text); font-size: 1.2rem">SKKU ADE</div>
+      <div class="nav-links">
+        <a href="#sec1">인사말</a>
+        <a href="#sec3">교수진</a>
+        <a href="#sec4">연구실</a>
+        <a href="#sec6">실적</a>
+        <a href="#sec8">행사</a>
+        <a href="#sec9">연락처</a>
+      </div>
+    </nav>
+
+
+    <!-- Cover Section -->
+    <section class="cover-section" id="cover">
+      <div class="institutional-bar">
+        <div class="inst-bar-left">
+          <div class="inst-logo-box"><span>SKKU</span></div>
+          <div>
+            <div style="font-size:0.95rem; font-weight:900; letter-spacing:0.1em">SUNGKYUNKWAN UNIVERSITY</div>
+            <div style="font-size:0.72rem; opacity:0.8; letter-spacing:0.06em; font-weight:500">성균관대학교 · Since 1398</div>
+          </div>
+        </div>
+        <div class="inst-bar-right">
+          <span style="opacity:0.85; font-size:0.8rem">Department of Advanced Display Engineering</span>
+          <span class="inst-badge">Vol.1 · Spring 2026</span>
+        </div>
+      </div>
+      <div class="cover-grid">
+        <div class="cover-left">
+          <div class="cover-top-rule">
+            <div class="rule-emblem"><span>ADE<br>SKKU</span></div>
+            <div class="rule-lines">
+              <div class="rule-line-top"></div>
+              <div class="rule-line-bot"></div>
+            </div>
+          </div>
+          <div class="masthead-kr">첨단디스플레이공학과</div>
+          <h1 class="masthead">Advanced Display<br>QUARTERLY</h1>
+          <div class="sub-masthead">Sungkyunkwan University · Department of Advanced Display Engineering</div>
+          <div class="issue-info">Vol.1 · Spring 2026 · 창간호</div>
+          <a href="https://ded.skku.edu/ded/index.do" target="_blank" class="view-btn">첨단디스플레이공학과 홈페이지 →</a>
+          
+        </div>
+        <div class="cover-right" style="background: #ddeeff; padding: 2.5rem 2rem; display: flex; flex-direction: column; border-left: none;">
+  <div class="cover-right-header" style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary); margin-bottom: 1.5rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--primary);">
+    CONTENTS
+  </div>
+  
+  <nav class="cover-toc" style="display: flex; flex-direction: column; gap: 5px;">
+    <a href="#sec1" style="text-decoration: none; background: var(--white); padding: 1.2rem; display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid #c5daf0; transition: 0.2s;">
+      <div style="font-size: 0.72rem; font-weight: 900; color: var(--white); background: var(--primary); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 2px;">01</div>
+      <div style="font-weight: 700; font-size: 0.95rem; color: var(--dark-text);">학과장 인사말</div>
+    </a>
+    
+    <a href="#sec2" style="text-decoration: none; background: var(--white); padding: 1.2rem; display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid #c5daf0; transition: 0.2s;">
+      <div style="font-size: 0.72rem; font-weight: 900; color: var(--white); background: var(--primary); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 2px;">02</div>
+      <div style="font-weight: 700; font-size: 0.95rem; color: var(--dark-text);">정보통신대학장 축사</div>
+    </a>
+
+    <a href="#sec3" style="text-decoration: none; background: var(--white); padding: 1.2rem; display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid #c5daf0; transition: 0.2s;">
+      <div style="font-size: 0.72rem; font-weight: 900; color: var(--white); background: var(--primary); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 2px;">03</div>
+      <div style="font-weight: 700; font-size: 0.95rem; color: var(--dark-text);">교수진 소개</div>
+    </a>
+
+    <a href="#sec4" style="text-decoration: none; background: var(--white); padding: 1.2rem; display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid #c5daf0; transition: 0.2s;">
+      <div style="font-size: 0.72rem; font-weight: 900; color: var(--white); background: var(--primary); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 2px;">04</div>
+      <div style="font-weight: 700; font-size: 0.95rem; color: var(--dark-text);">주요 연구실 현황</div>
+    </a>
+
+    <a href="#sec5" style="text-decoration: none; background: var(--white); padding: 1.2rem; display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid #c5daf0; transition: 0.2s;">
+      <div style="font-size: 0.72rem; font-weight: 900; color: var(--white); background: var(--primary); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 2px;">05</div>
+      <div style="font-weight: 700; font-size: 0.95rem; color: var(--dark-text);">1분기 연구실적</div>
+    </a>
+
+    <a href="#sec8" style="text-decoration: none; background: var(--white); padding: 1.2rem; display: flex; align-items: center; gap: 1rem; transition: 0.2s;">
+      <div style="font-size: 0.72rem; font-weight: 900; color: var(--white); background: var(--primary); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 2px;">06</div>
+      <div style="font-weight: 700; font-size: 0.95rem; color: var(--dark-text);">학과 주요 행사</div>
+    </a>
+  </nav>
+<div style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+    <div style="background: rgba(0, 87, 184, 0.05); border: 1px solid rgba(0, 87, 184, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
+        <div style="color: var(--secondary); font-size: 1.5rem; font-weight: 900; line-height: 1;">62</div>
+        <div style="color: var(--dark-text); font-size: 0.7rem; font-weight: 700; margin-top: 5px; opacity: 0.8;">컨소시엄 기업</div>
+    </div>
+    <div style="background: rgba(0, 87, 184, 0.05); border: 1px solid rgba(0, 87, 184, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
+        <div style="color: var(--secondary); font-size: 1.5rem; font-weight: 900; line-height: 1;">32</div>
+        <div style="color: var(--dark-text); font-size: 0.7rem; font-weight: 700; margin-top: 5px; opacity: 0.8;">산학 프로젝트</div>
+    </div>
+    <div style="background: rgba(0, 87, 184, 0.05); border: 1px solid rgba(0, 87, 184, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
+        <div style="color: var(--secondary); font-size: 1.5rem; font-weight: 900; line-height: 1;">24</div>
+        <div style="color: var(--dark-text); font-size: 0.7rem; font-weight: 700; margin-top: 5px; opacity: 0.8;">참여 연구실</div>
+    </div>
+    <div style="background: rgba(0, 87, 184, 0.05); border: 1px solid rgba(0, 87, 184, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
+        <div style="color: var(--secondary); font-size: 1.5rem; font-weight: 900; line-height: 1;">118</div>
+        <div style="color: var(--dark-text); font-size: 0.7rem; font-weight: 700; margin-top: 5px; opacity: 0.8;">재학생 수</div>
+    </div>
+<div style="grid-column: span 2; background: rgba(0, 87, 184, 0.05); border: 1px solid rgba(0, 87, 184, 0.1); padding: 0.8rem; border-radius: 8px; text-align: center; display: flex; justify-content: center; align-items: baseline; gap: 8px;">
+    <span style="color: var(--dark-text); font-size: 0.75rem; font-weight: 600; opacity: 0.8;">정부지원금</span>
+    <span style="color: var(--secondary); font-size: 1.5rem; font-weight: 900;">150</span>
+    <span style="color: var(--dark-text); font-size: 0.8rem; font-weight: 700; opacity: 0.8;">억원</span>
+</div>
+  
+  </div>
+</div>
+    </section>
+
+    <!-- Section 01 -->
+  <div class="section-wrapper" style="opacity: 1; transform: translateY(0); transition: opacity 0.6s, transform 0.6s;">
+  <div class="section-banner">
+    <div class="section-banner-inner">
+      <span class="section-number">01</span>
+      <span class="section-title">Message from the Chair · 학과장 인사말</span>
+      <div class="section-rule"></div>
+    </div>
+  </div>
+
+  <section id="sec1" class="section-container">
+    <div class="dean-message">
+      <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--primary); margin-bottom: 2rem">Welcome Message</h2>
+      
+      <p style="font-size: 1.2rem; font-weight: 700; line-height: 1.6; color: var(--dark-text)">
+        "차세대 디스플레이 산업을 선도하는<br>글로벌 핵심 인재 육성의 요람입니다."
+      </p>
+
+      <p style="margin-top: 2rem; line-height: 1.8; color: #555">
+        성균관대학교 첨단디스플레이공학과 홈페이지를 찾아주신 여러분을 환영합니다. 우리 학과는 빠르게 변화하는 글로벌 시장에 맞춰 세계 최고 수준의 연구 역량과 실무 교육 시스템을 갖추고 있습니다. 소재, 소자, 공정 전반을 아우르는 교육을 통해 학생들이 미래 리더로 성장할 수 있도록 최선의 노력을 다하겠습니다.
+      </p>
+
+      <div style="margin-top: 3rem; font-weight: 700; color: var(--dark-text)">
+        첨단디스플레이공학과 학과장 송장근
+      </div>
+    </div>
+  </section>
+</div>
+    <!-- Section 02 -->
+    <div class="section-wrapper" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+      <div class="section-banner"><div class="section-banner-inner"><span class="section-number">02</span><span class="section-title">Dean's Message · 학장 축사</span><div class="section-rule"></div></div></div>
+      <section id="sec2" class="section-container">
+        <div class="dean-message">
+          <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--primary); margin-bottom: 2rem">Congratulations</h2>
+          <p style="font-size: 1.2rem; font-weight: 700; line-height: 1.6; color: var(--dark-text)">"디스플레이는 모든 정보통신 기기의 핵심 인터페이스이자,<br>미래 AI 및 초연결 사회를 구현하는 가장 중요한 하드웨어 플랫폼입니다."</p>
+          <p style="margin-top: 2rem; line-height: 1.8; color: #555">첨단디스플레이공학과의 첫 번째 계간지 창간을 진심으로 축하합니다. 성균관대학교는 오랜 기간 축적된 연구 역량과 강력한 산학 네트워크를 바탕으로 이 분야의 새로운 패러다임을 제시할 준비가 되어 있습니다. 창간호를 통해 학과의 눈부신 연구 성과가 널리 알려지기를 바랍니다.</p>
+          <div style="margin-top: 3rem; font-weight: 700; color: var(--dark-text)">정보통신대학장 전정훈</div>
+        </div>
+      </section>
+    </div>
+
+     <!-- Section 03 -->
+    <div class="section-wrapper" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+      <div class="section-banner"><div class="section-banner-inner"><span class="section-number">03</span><span class="section-title">Faculty Directory · 교수 소개</span><div class="section-rule"></div></div></div>
+      <section id="sec3" class="section-container">
+        <div class="content-grid col-3" id="profGrid">
+          <div class="prof-card">
+            <div class="prof-name">송장근</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6dcdd98c5d9d8d1f6c5ddddc398d3d2c3">[email&#160;protected]</a></div>
+            <div class="prof-info">031-299-4599</div>
+            <div class="prof-info" style="font-weight: 600">디스플레이 소자 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">LCD/OLED</span><span class="prof-tag">e-paper</span><span class="prof-tag">이미지처리</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://swb.skku.edu/display/" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">김명길</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e5889c908b82828c89a5968e8e90cb808190">[email&#160;protected]</a></div>
+            <div class="prof-info">031-290-7392</div>
+            <div class="prof-info" style="font-weight: 600">전자에너지 재료 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">산화물반도체</span><span class="prof-tag">EUV포토레지스트</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://sites.google.com/view/imclatskku/home" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">김용상</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="90e9fffef7e3f1fef7d0e3fbfbe5bef5f4e5">[email&#160;protected]</a></div>
+            <div class="prof-info">031-299-4323</div>
+            <div class="prof-info" style="font-weight: 600">유기소자 및 바이오센서</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">산화물TFT</span><span class="prof-tag">유기박막</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://swb.skku.edu/NEMS/index.do" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">김한기</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="99f1f8f7f2f0f2f0f4d9eaf2f2ecb7fcfdec">[email&#160;protected]</a></div>
+            <div class="prof-info">031-290-7391</div>
+            <div class="prof-info" style="font-weight: 600">박막 플렉시블 투명소재</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">투명전극</span><span class="prof-tag">플렉시블</span><span class="prof-tag">태양전지</span></div>
+            <div style="margin-top: 0.75rem"><a href="http://imdl.skku.edu/" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">배완기</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f98e929b989cb98a92928cd79c9d8c">[email&#160;protected]</a></div>
+            <div class="prof-info">010-7677-3503</div>
+            <div class="prof-info" style="font-weight: 600">양자점 나노소재 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">반도체나노닷</span><span class="prof-tag">양자점합성</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://sites.google.com/view/qndl" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">원상민</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6c1f0d020b0105021b03022c1f07071942090819">[email&#160;protected]</a></div>
+            <div class="prof-info">031-299-4320</div>
+            <div class="prof-info" style="font-weight: 600">플렉시블전자 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">신축성소자</span><span class="prof-tag">무선표피</span><span class="prof-tag">AI통신</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://www.skkuwongroup.online/" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">이보람</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ddbfafb1b8b89daeb6b6a8f3b8b9a8">[email&#160;protected]</a></div>
+            <div class="prof-info">031-290-7416</div>
+            <div class="prof-info" style="font-weight: 600">광전자 소재 및 소자</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">하이브리드광전자</span><span class="prof-tag">차세대디스플레이</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://sites.google.com/view/home-brlee" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">이준신</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="600a150e13090e20130b0b154e050415">[email&#160;protected]</a></div>
+            <div class="prof-info">031-290-7139</div>
+            <div class="prof-info" style="font-weight: 600">반도체소자 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">탠덤태양전지</span><span class="prof-tag">산화물반도체</span></div>
+            <div style="margin-top: 0.75rem"><a href="http://joy.skku.ac.kr/" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">이준엽</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="eb878e8e81dadcab9880809ec58e8f9e">[email&#160;protected]</a></div>
+            <div class="prof-info">031-299-4716</div>
+            <div class="prof-info" style="font-weight: 600">디스플레이소재 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">OLED</span><span class="prof-tag">청색발광소자</span></div>
+            <div style="margin-top: 0.75rem"><a href="http://oled.skku.edu/" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">임재훈</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="22480c4e4b4f62514949570c474657">[email&#160;protected]</a></div>
+            <div class="prof-info">031-299-6273</div>
+            <div class="prof-info" style="font-weight: 600">반도체나노소재 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">양자점</span><span class="prof-tag">광전자소자</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://www.ondl-skku.com/" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+<div class="prof-card">
+            <div class="prof-name">전일용</div>
+            <div class="prof-info">iyjeon@skku.edu</div>
+            <div class="prof-info">031-299-4723</div>
+            <div class="prof-info" style="font-weight: 600">MIDAS LAB</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">분자디자인</span><span class="prof-tag">에너지소자</span><span class="prof-tag">나노소재</span></div>
+            <div style="margin-top: 0.75rem">
+              <a href="https://www.midasl.ch" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a>
+            </div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">전종욱</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1c7ded8c981868186f1c2dadac49fd4d5c4">[email&#160;protected]</a></div>
+            <div class="prof-info">반도체 CAD 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">반도체CAD</span><span class="prof-tag">디바이스시뮬레이션</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://sites.google.com/view/skku-drl/home" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">정소희</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7d0e53171812131a3d0e16160853181908">[email&#160;protected]</a></div>
+            <div class="prof-info">031-299-4058</div>
+            <div class="prof-info" style="font-weight: 600">재료화학 연구실 (CutieQD)</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">콜로이달나노결정</span><span class="prof-tag">표면화학</span></div>
+            <div style="margin-top: 0.75rem"><a href="http://cutieqd.skku.edu/" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">조규진</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5730343f386667676317243c3c2279323322">[email&#160;protected]</a></div>
+            <div class="prof-info">031-299-4793</div>
+            <div class="prof-info" style="font-weight: 600">LAMP Lab (생명물리)</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">R2R프린팅</span><span class="prof-tag">바이오전자</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://swb.skku.edu/r2rcomputer/" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">조성민</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8cfff9e2ebe1efe4e3ccffe7e7f9a2e9e8f9">[email&#160;protected]</a></div>
+            <div class="prof-info">031-290-7251</div>
+            <div class="prof-info" style="font-weight: 600">무기화학공정 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">유연OLED</span><span class="prof-tag">원자층증착</span></div>
+            <div style="margin-top: 0.75rem"><a href="http://hrpt2003.wixsite.com/skku-nmrl" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">최재혁</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="197a717670612b282c596a72726c377c7d6c">[email&#160;protected]</a></div>
+            <div class="prof-info">031-299-4394</div>
+            <div class="prof-info" style="font-weight: 600">반도체 회로/시스템 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">CMOS센서</span><span class="prof-tag">아날로그회로</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://sites.google.com/view/eemix" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">김세정</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0774626d626869606c47746c6c7229626372">[email&#160;protected]</a></div>
+            <div class="prof-info">031-290-7699</div>
+            <div class="prof-info" style="font-weight: 600">나노포토닉스 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">2D물질나노광학</span><span class="prof-tag">양자광원</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://sites.google.com/view/sejeongkimlab/" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">유현승</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fb938288d5828ebb8890908ed59e9f8e">[email&#160;protected]</a></div>
+            <div class="prof-info">031-290-7147</div>
+            <div class="prof-info" style="font-weight: 600">CANVAS Lab (디스플레이/그래픽스)</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">3D디스플레이</span><span class="prof-tag">XR</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://www.canvas-lab.com/" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">조형균</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="82e1eaedeae9c2f1e9e9f7ace7e6f7">[email&#160;protected]</a></div>
+            <div class="prof-info">031-290-7364</div>
+            <div class="prof-info" style="font-weight: 600">지능형반도체 연구실 (SCL)</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">TFT구동소자</span><span class="prof-tag">플렉시블배터리</span></div>
+            <div style="margin-top: 0.75rem"><a href="http://scl.skku.edu/" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">최창순</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="caa9b9a9a2a5a3f3fb8ab9a1a1bfe4afaebf">[email&#160;protected]</a></div>
+            <div class="prof-info">031-290-7694</div>
+            <div class="prof-info" style="font-weight: 600">광전자 반도체 소자/시스템</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">광전자소자</span><span class="prof-tag">유연전자</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://sites.google.com/view/cschoigroup" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">홍영준</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b32212324252c7c730b3820203e652e2f3e">[email&#160;protected]</a></div>
+            <div class="prof-info">031-299-4192</div>
+            <div class="prof-info" style="font-weight: 600">반도체 광/전자소자 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">반도체에피택시</span><span class="prof-tag">마이크로LED</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://sites.google.com/view/snadatsejong" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+          <div class="prof-card">
+            <div class="prof-name">변도영</div>
+            <div class="prof-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="caaeb3a8b3bfa48ab9a1a1bfe4afaebf">[email&#160;protected]</a></div>
+            <div class="prof-info">031-299-4846</div>
+            <div class="prof-info" style="font-weight: 600">나노열유체 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">마이크로나노유체</span><span class="prof-tag">인쇄전자</span></div>
+            <div style="margin-top: 0.75rem"><a href="https://sites.google.com/view/mnfl-skku/home" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a></div>
+          </div>
+<div class="prof-card">
+            <div class="prof-name">고두현</div>
+            <div class="prof-info">dhko@skku.edu</div>
+            <div class="prof-info">031-290-5938</div>
+            <div class="prof-info" style="font-weight: 600">플라즈모닉스/딥러닝 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">플라즈모닉스</span><span class="prof-tag">딥러닝</span></div>
+            <div style="margin-top: 0.75rem">
+              <a href="https://sites.google.com/view/pdlskku" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a>
+            </div>
+          </div>
+<div class="prof-card">
+            <div class="prof-name">최민재</div>
+            <div class="prof-info">minjae.choi@skku.edu</div>
+            <div class="prof-info">031-290-7393</div>
+            <div class="prof-info" style="font-weight: 600">차세대 반도체 소재 연구실</div>
+            <div style="margin-top: 0.5rem"><span class="prof-tag">양자점</span><span class="prof-tag">태양전지</span><span class="prof-tag">광전소자</span></div>
+            <div style="margin-top: 0.75rem">
+              <a href="https://sites.google.com/view/choilab-skku" target="_blank" style="display:inline-block;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.72rem;font-weight:700;text-decoration:none;">🔬 연구실 바로가기 →</a>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem">
+          <a href="https://ded.skku.edu/ded/faculty.do" target="_blank" style="display:inline-block;background:var(--white);color:var(--primary);border:1px solid var(--primary);padding:0.8rem 2rem;text-decoration:none;font-weight:700;">VIEW ALL FACULTY →</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Section 04 -->
+<div class="section-wrapper" style="opacity: 1; transform: translateY(0); transition: opacity 0.6s, transform 0.6s;">
+  <div class="section-banner">
+    <div class="section-banner-inner">
+      <span class="section-number">04</span>
+      <span class="section-title">Featured Labs · 주목 연구실</span>
+      <div class="section-rule"></div>
+    </div>
+  </div>
+
+  <section id="sec4" class="section-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem 3rem;">
+    
+    <div class="lab-card" style="background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+      <div style="padding: 2rem; border-bottom: 1px solid #f0f0f0; flex-grow: 1;">
+        <div style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.1em;">Nano-Optics Lab</div>
+        <h3 style="font-size: 1.6rem; color: var(--dark-text); margin: 0; font-weight: 800;">김세정 교수 연구실</h3>
+        <p style="font-size: 0.9rem; color: #666; margin-top: 1rem; line-height: 1.6; word-break: keep-all;">
+          나노 광학 소자 및 메타표면 기반 차세대 디스플레이 시스템을 연구하며 미래 광학 기술의 한계를 개척합니다.
+        </p>
+      </div>
+      <div style="padding: 1.2rem 2rem; background: #fafafa;">
+        <a href="https://sites.google.com/view/sejeongkimlab/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: var(--primary); color: white; padding: 0.7rem 1.2rem; border-radius: 4px; font-size: 0.85rem; font-weight: 700; transition: 0.2s;">
+          LAB 홈페이지 바로가기 <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lab-card" style="background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+      <div style="padding: 2rem; border-bottom: 1px solid #f0f0f0; flex-grow: 1;">
+        <div style="color: var(--secondary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.1em;">MIDAS LAB</div>
+        <h3 style="font-size: 1.6rem; color: var(--dark-text); margin: 0; font-weight: 800;">전일용 교수 연구실</h3>
+        <p style="font-size: 0.9rem; color: #666; margin-top: 1rem; line-height: 1.6; word-break: keep-all;">
+          분자 및 인터페이스 디자인을 통한 혁신적인 소재 연구를 수행하며, 차세대 에너지 및 디스플레이 소자의 성능을 극대화합니다.
+        </p>
+      </div>
+      <div style="padding: 1.2rem 2rem; background: #fafafa;">
+        <a href="https://www.midasl.ch" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: var(--secondary); color: white; padding: 0.7rem 1.2rem; border-radius: 4px; font-size: 0.85rem; font-weight: 700; transition: 0.2s;">
+          LAB 홈페이지 바로가기 <span>→</span>
+        </a>
+      </div>
+    </div>
+
+  </section>
+</div>
+        </div>
+      </section>
+    </div>
+    <!-- Section 06 -->
+    <div class="section-wrapper" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+      <div class="section-banner"><div class="section-banner-inner"><span class="section-number">06</span><span class="section-title"> Department Overview 학과현황</span><div class="section-rule"></div></div></div>
+
+  <section id="sec5" class="section-container" style="padding: 2rem 3rem;"> <div class="stat-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+      <div class="stat-item" style="background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--primary); padding: 1rem; text-align: center; border-radius: 4px;">
+        <strong style="display: block; font-size: 2rem; font-weight: 900; color: var(--primary); line-height: 1.2;">62</strong>
+        <span style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--dark-text);">컨소시엄 기업</span>
+      </div>
+      <div class="stat-item" style="background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--secondary); padding: 1rem; text-align: center; border-radius: 4px;">
+        <strong style="display: block; font-size: 2rem; font-weight: 900; color: var(--secondary); line-height: 1.2;">32</strong>
+        <span style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--dark-text);">산학 과제수</span>
+      </div>
+      <div class="stat-item" style="background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--accent); padding: 1rem; text-align: center; border-radius: 4px;">
+        <strong style="display: block; font-size: 2rem; font-weight: 900; color: var(--accent); line-height: 1.2;">24</strong>
+        <span style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--dark-text);">참여 연구실</span>
+      </div>
+      <div class="stat-item" style="background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--dark-text); padding: 1rem; text-align: center; border-radius: 4px;">
+        <strong style="display: block; font-size: 2rem; font-weight: 900; color: var(--dark-text); line-height: 1.2;">118</strong>
+        <span style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--dark-text);">재적 학생수</span>
+      </div>
+    </div>
+      
+      <div style="display: grid; grid-template-columns: 3fr 1.2fr; gap: 1rem;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+          <div style="text-align: center; padding: 0.7rem 0.3rem; background: #f8fbff; border-radius: 4px;">
+            <div style="font-size: 0.75rem; font-weight: 800; color: var(--primary); margin-bottom: 0.2rem;">석사</div>
+            <div style="font-size: 1.3rem; font-weight: 900; color: var(--dark-text);">98<small style="font-size: 0.7rem;">명</small></div>
+          </div>
+          <div style="text-align: center; padding: 0.7rem 0.3rem; background: #f8fbff; border-radius: 4px;">
+            <div style="font-size: 0.75rem; font-weight: 800; color: var(--primary); margin-bottom: 0.2rem;">박사</div>
+            <div style="font-size: 1.3rem; font-weight: 900; color: var(--dark-text);">11<small style="font-size: 0.7rem;">명</small></div>
+          </div>
+          <div style="text-align: center; padding: 0.7rem 0.3rem; background: #f8fbff; border-radius: 4px;">
+            <div style="font-size: 0.75rem; font-weight: 800; color: var(--primary); margin-bottom: 0.2rem;">석박통합</div>
+            <div style="font-size: 1.3rem; font-weight: 900; color: var(--dark-text);">9<small style="font-size: 0.7rem;">명</small></div>
+          </div>
+        </div>
+
+        <div style="text-align: center; padding: 0.7rem 0.3rem; background: #f8fbff; border-radius: 4px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid #e1eefb;">
+  <div style="font-size: 0.75rem; font-weight: 800; color: var(--primary); margin-bottom: 0.2rem; text-transform: uppercase;">Graduates</div>
+  <div style="font-size: 1.3rem; font-weight: 900; color: var(--dark-text);">
+    6<small style="font-size: 0.7rem; margin-left: 2px;">명</small>
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+    <!-- Section 05 -->
+  <div id="sec6" class="section-wrapper" style="opacity: 1; transform: translateY(0); transition: opacity 0.6s, transform 0.6s; margin-bottom: 5rem;">
+  <div class="section-banner">
+    <div class="section-banner-inner">
+      <span class="section-number">05</span>
+      <span class="section-title">Achievement Highlights · 주요 성과 및 실적</span>
+      <div class="section-rule"></div>
+    </div>
+  </div>
+
+  <section class="section-container">
+    
+    <h3 style="font-size: 1.4rem; color: var(--primary); margin-bottom: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 1.6rem;">🤝</span> 산학 협력 및 수상 실적
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-bottom: 3.5rem;">
+      <div style="background: #fdfdfd; border: 1px solid #eee; padding: 1.5rem; border-radius: 8px;">
+        <div style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">산학 프로젝트 수행</div>
+        <p style="font-size: 0.9rem; line-height: 1.6; color: #555; word-break: keep-all;">삼성·LG디스플레이 등 주요 기업과 '청색 양자점 소재 개발' 등 <strong>총 25건</strong>의 프로젝트 진행</p>
+      </div>
+      <div style="background: #fdfdfd; border: 1px solid #eee; padding: 1.5rem; border-radius: 8px;">
+        <div style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">산학프로젝트 챌린지 수상</div>
+        <p style="font-size: 0.9rem; line-height: 1.6; color: #555; word-break: keep-all;">마이크로 디스플레이 및 패널 회로 개발 연구로 <strong>최우수상 및 우수상(2025.12)</strong> 수상</p>
+      </div>
+      <div style="background: #fdfdfd; border: 1px solid #eee; padding: 1.5rem; border-radius: 8px;">
+        <div style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">IDW’25 Best Student Paper</div>
+        <p style="font-size: 0.9rem; line-height: 1.6; color: #555; word-break: keep-all;">심예진 학생 등 RF 스퍼터링 이용 고성능 박막 트랜지스터 연구로 <strong>국제 학회 우수 논문상</strong> 수여</p>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3.5rem; background: #f9f9f9; padding: 2.5rem; border-radius: 12px;">
+      <div>
+        <h4 style="margin-top: 0; color: #333; border-left: 4px solid var(--primary); padding-left: 12px;">🇺🇸 미국 특허 등록 (핵심 사례)</h4>
+        <ul style="list-style: none; padding: 0; margin-top: 1rem; font-size: 0.9rem; color: #666; line-height: 2;">
+          <li>• Liquid Crystal Display Device <span style="color: #999; font-size: 0.8rem;">(2023.10)</span></li>
+          <li>• Wavelength Tunable LC Etalon Filter <span style="color: #999; font-size: 0.8rem;">(2023.08)</span></li>
+          <li>• Liquid Crystal Display and Panel <span style="color: #999; font-size: 0.8rem;">(2023.05)</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="margin-top: 0; color: #333; border-left: 4px solid var(--primary); padding-left: 12px;">🇰🇷 국내 특허 출원 (2025 주요)</h4>
+        <ul style="list-style: none; padding: 0; margin-top: 1rem; font-size: 0.9rem; color: #666; line-height: 2;">
+          <li>• 김명길 교수: 디스플레이 관련 기술 출원 <span style="color: #999; font-size: 0.8rem;">(02월)</span></li>
+          <li>• 이준신 교수팀: 차세대 소자 관련 기술 출원 <span style="color: #999; font-size: 0.8rem;">(03월)</span></li>
+          <li>• 염근영 교수팀: Low GWP 대체 가스 식각법 특허</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center;">
+      <div style="padding: 1.5rem; background: #fff; border: 1px solid #eee; border-radius: 8px;">
+        <div style="font-size: 0.8rem; color: #888; margin-bottom: 0.5rem;">교육 만족도</div>
+        <div style="font-size: 1.6rem; font-weight: 900; color: var(--primary);">95.1<span style="font-size: 1rem;">점</span></div>
+        <div style="font-size: 0.75rem; color: #aaa; margin-top: 0.3rem;">참여기업 95.4점 기록</div>
+      </div>
+      <div style="padding: 1.5rem; background: #fff; border: 1px solid #eee; border-radius: 8px;">
+        <div style="font-size: 0.8rem; color: #888; margin-bottom: 0.5rem;">전문 교수진</div>
+        <div style="font-size: 1.6rem; font-weight: 900; color: var(--primary);">24<span style="font-size: 1rem;">명</span></div>
+        <div style="font-size: 0.75rem; color: #aaa; margin-top: 0.3rem;">분야별 최고 전임교원</div>
+      </div>
+      <div style="padding: 1.5rem; background: #fff; border: 1px solid #eee; border-radius: 8px;">
+        <div style="font-size: 0.8rem; color: #888; margin-bottom: 0.5rem;">연구 인프라</div>
+        <div style="font-size: 1.2rem; font-weight: 900; color: var(--primary);">262개 최점단 장비 보유<span style="font-size: 1rem;"></span></div>
+        <div style="font-size: 0.75rem; color: #aaa; margin-top: 0.3rem;">727평</div>
+      </div>
+      <div style="padding: 1.5rem; background: #fff; border: 1px solid #eee; border-radius: 8px;">
+        <div style="font-size: 0.8rem; color: #888; margin-bottom: 0.5rem;">교과목 혁신</div>
+        <div style="font-size: 1.6rem; font-weight: 900; color: var(--primary);">12<span style="font-size: 1rem;">개</span></div>
+        <div style="font-size: 0.75rem; color: #aaa; margin-top: 0.3rem;">신규 7개 / 고도화 5개</div>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+ <!-- Section 06 -->
+
+<div class="section-wrapper">
+      <div class="section-banner">
+        <div class="section-banner-inner">
+          <span class="section-number">06</span>
+          <span class="section-title">Media Coverage · 언론 보도</span>
+          <div class="section-rule"></div>
+        </div>
+      </div>
+      <section id="sec7" class="section-container">
+        <div class="content-grid col-2">
+          
+          <div class="news-card">
+            <div style="font-size: 0.8rem; color: #888; font-weight:700">2026.02 · 배완기·임재훈 교수팀</div>
+            <h4 style="margin: 0.5rem 0; font-size: 1.1rem">양자점 손상 없는 초정밀 패터닝 기술 개발</h4>
+            <p style="font-size: 0.88rem; color:#555; line-height:1.6">포토레지스트 없이 양자점을 정밀하게 배열하는 비파괴형 기술을 개발하여 AR/VR용 마이크로디스플레이 상용화의 돌파구를 마련했습니다.</p>
+            <a href="https://www.cnbnews.com/news/article.html?no=777025" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.75rem;font-weight:700;text-decoration:none;">기사 바로가기 →</a>
+          </div>
+
+          <div class="news-card">
+            <div style="font-size: 0.8rem; color: #888; font-weight:700">2025.10 · 이준신 교수</div>
+            <h4 style="margin: 0.5rem 0; font-size: 1.1rem">2025 대한민국 재생에너지 대상 수상</h4>
+            <p style="font-size: 0.88rem; color:#555; line-height:1.6">제7회 재생에너지의 날 기념식에서 재생에너지 발전 유공자로 선정되어 대한민국 재생에너지 대상을 수상했습니다.</p>
+            <a href="https://www.epj.co.kr/news/articleView.html?idxno=37200" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.75rem;font-weight:700;text-decoration:none;">기사 바로가기 →</a>
+          </div>
+
+          <div class="news-card">
+            <div style="font-size: 0.8rem; color: #888; font-weight:700">2025.10 · 원상민·유재영 교수팀</div>
+            <h4 style="margin: 0.5rem 0; font-size: 1.1rem">피부 부착형 초박형 센서 플랫폼 개발</h4>
+            <p style="font-size: 0.88rem; color:#555; line-height:1.6">말할 때의 미세한 떨림으로 폐 기능을 진단하고 촉각을 원격으로 전달하는 차세대 커뮤니케이션 기술을 구현했습니다.</p>
+            <a href="https://www.dailysmart.co.kr/news/articleView.html?idxno=114209" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.75rem;font-weight:700;text-decoration:none;">기사 바로가기 →</a>
+          </div>
+
+          <div class="news-card">
+            <div style="font-size: 0.8rem; color: #888; font-weight:700">2025.10 · 이내응·김명길 교수팀</div>
+            <h4 style="margin: 0.5rem 0; font-size: 1.1rem">압전 성능 3배 이상 높인 나노복합소재 개발</h4>
+            <p style="font-size: 0.88rem; color:#555; line-height:1.6">황화물 에어로겔을 이용해 기존의 한계를 극복한 고성능 압전 센서 소재를 세계 최초로 개발했습니다.</p>
+            <a href="https://www.lecturernews.com/news/articleView.html?idxno=188202" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.75rem;font-weight:700;text-decoration:none;">기사 바로가기 →</a>
+          </div>
+
+          <div class="news-card">
+            <div style="font-size: 0.8rem; color: #888; font-weight:700">2025.12 · 변도영 교수팀</div>
+            <h4 style="margin: 0.5rem 0; font-size: 1.1rem">세계 최고 성능 마이크로 슈퍼커패시터 구현</h4>
+            <p style="font-size: 0.88rem; color:#555; line-height:1.6">산화 안정성이 뛰어난 맥신 잉크를 개발하여 초소형 전자기기용 고집적 에너지 저장 소자 프린팅 기술을 완성했습니다.</p>
+            <a href="https://www.veritas-a.com/news/articleView.html?idxno=587695" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.75rem;font-weight:700;text-decoration:none;">기사 바로가기 →</a>
+          </div>
+
+          <div class="news-card">
+            <div style="font-size: 0.8rem; color: #888; font-weight:700">2026.04 · 학과 소식</div>
+            <h4 style="margin: 0.5rem 0; font-size: 1.1rem">첨단디스플레이공학과 최신 연구 동향</h4>
+            <p style="font-size: 0.88rem; color:#555; line-height:1.6">성균관대 공식 홈페이지를 통해 발표된 학과의 주요 연구 성과와 최신 보도자료를 확인하실 수 있습니다.</p>
+            <a href="https://www.skku.edu/skku/campus/skk_comm/news02.do" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.75rem;font-weight:700;text-decoration:none;">기사 바로가기 →</a>
+          </div>
+
+        </div>
+      </section>
+    </div> 
+
+    <!-- Section 07 -->
+    <div class="section-wrapper" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+      <div class="section-banner"><div class="section-banner-inner"><span class="section-number">07</span><span class="section-title">Events Calendar · 학과 주요 행사</span><div class="section-rule"></div></div></div>
+      <section id="sec8" class="section-container">
+       <div class="content-grid col-2">
+  <div class="news-card">
+    <div style="font-size: 0.8rem; color: #888; font-weight:700">성대뉴스</div>
+    <h4 style="margin: 0.5rem 0; font-size: 1.1rem">AI 기반 디스플레이 초가속 연구개발 포럼 성료</h4>
+    <p style="font-size: 0.88rem; color:#555; line-height:1.6">산업계 수요에 맞춘 실전형 교육과정으로 차세대 디스플레이 분야를 선도할 핵심 인재를 육성합니다.</p>
+    <a href="https://www.skku.edu/skku/campus/skk_comm/news.do?mode=view&articleNo=135684" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.75rem;font-weight:700;text-decoration:none;">내용 보기 →</a>
+  </div>
+
+  <div class="news-card">
+    <div style="font-size: 0.8rem; color: #888; font-weight:700">장학 안내</div>
+    <h4 style="margin: 0.5rem 0; font-size: 1.1rem">2026 후기 新대학원우수장학생 선발</h4>
+    <p style="font-size: 0.88rem; color:#555; line-height:1.6">우수 인재 유치를 위한 대학원 장학생 선발이 진행 중입니다. (~4/8 마감)</p>
+    <a href="https://ded.skku.edu/ded/notice.do?mode=view&articleNo=215503" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.75rem;font-weight:700;text-decoration:none;">내용 보기 →</a>
+  </div>
+
+  <div class="news-card">
+    <div style="font-size: 0.8rem; color: #888; font-weight:700">입학 안내</div>
+    <h4 style="margin: 0.5rem 0; font-size: 1.1rem">대학원 후기 진학 설명회 개최</h4>
+    <p style="font-size: 0.88rem; color:#555; line-height:1.6">산학 장학생 제도 및 연구 분야 안내를 위한 온/오프라인 설명회 소식입니다.</p>
+    <a href="https://ded.skku.edu/ded/notice.do?mode=view&articleNo=213719" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.75rem;font-weight:700;text-decoration:none;">내용 보기 →</a>
+  </div>
+
+  <div class="news-card">
+    <div style="font-size: 0.8rem; color: #888; font-weight:700">모집 공고</div>
+    <h4 style="margin: 0.5rem 0; font-size: 1.1rem">2026 후기 일반대학원 전형 모집</h4>
+    <p style="font-size: 0.88rem; color:#555; line-height:1.6">미래 디스플레이를 함께 연구할 신입생을 모집합니다. (원서접수: 3.24~4.8)</p>
+    <a href="https://ded.skku.edu/ded/notice.do?mode=view&articleNo=212872" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.3rem 0.8rem;background:var(--primary);color:#fff;font-size:0.75rem;font-weight:700;text-decoration:none;">내용 보기 →</a>
+  </div>
+</div>
+      </section>
+    </div>
+
+    <!-- Section 08 -->
+    <div class="section-wrapper" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+      <div class="section-banner"><div class="section-banner-inner"><span class="section-number">08</span><span class="section-title">Graduating Students · 졸업예정자 소개</span><div class="section-rule"></div></div></div>
+      <section id="sec9" class="section-container">
+        <div class="content-grid col-2">
+          <div style="background: var(--white); padding: 2rem; border: 1px solid var(--border)">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem"><strong>졸업예정자 A (석사)</strong><span style="color: var(--secondary)">4학기</span></div>
+            <p style="font-size: 0.9rem; color: #666">지도교수: 김한기 (박막 플렉시블 투명소재 연구실)</p>
+            <hr style="margin: 1rem 0; border-color: #eee">
+            <p style="font-size: 0.9rem"><strong>논문:</strong> 무기물 기반 고효율 투명전극 개발</p>
+          </div>
+          <div style="background: var(--white); padding: 2rem; border: 1px solid var(--border)">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem"><strong>졸업예정자 B (박사 수료)</strong><span style="color: var(--secondary)">수료</span></div>
+            <p style="font-size: 0.9rem; color: #666">지도교수: 배완기 (양자점 나노소재 연구실)</p>
+            <hr style="margin: 1rem 0; border-color: #eee">
+            <p style="font-size: 0.9rem"><strong>논문:</strong> 무독성 양자점 리간드 교환 최적화</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Section 09 -->
+<div id="sec9" class="section-wrapper" style="opacity: 1; transform: translateY(0); transition: opacity 0.6s, transform 0.6s; scroll-margin-top: 100px;">
+  <div class="section-banner">
+    <div class="section-banner-inner">
+      <span class="section-number">09</span>
+      <span class="section-title">Contact · 행정실 연락처</span>
+      <div class="section-rule"></div>
+    </div>
+  </div>
+
+  <section class="section-container" style="padding: 1rem 0;">
+    <div style="display: flex; background: #fff; border: 1px solid #e1e8ed; border-radius: 12px; overflow: hidden; min-height: 140px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+      
+      <div style="flex: 0 0 180px; background: #e3f2fd; color: #1976d2; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-right: 1px solid #e1e8ed;">
+        <div style="font-size: 1.8rem; margin-bottom: 0.2rem;">📍</div>
+        <div style="font-weight: 800; font-size: 0.9rem; letter-spacing: 0.05em; line-height: 1.2;">SKKU<br>DISPLAY</div>
+      </div>
+
+      <div style="flex: 1; padding: 1.5rem 2.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem;">
+        
+        <div style="display: flex; align-items: flex-start; gap: 1.2rem;">
+          <span style="color: #1976d2; font-weight: 800; font-size: 0.8rem; white-space: nowrap; min-width: 60px; padding-top: 2px;">OFFICE</span>
+          <span style="color: #444; font-size: 0.95rem; line-height: 1.5; word-break: keep-all;">(16419) 경기도 수원시 장안구 서부로 2066<br>성균관대학교 자연과학캠퍼스 제1공학관 23129호</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 1.2rem;">
+            <span style="color: #1976d2; font-weight: 800; font-size: 0.8rem; white-space: nowrap; min-width: 60px;">TEL</span>
+            <span style="color: #222; font-weight: 600; font-size: 0.95rem;">031-290-7161 / 7163</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 1.2rem;">
+            <span style="color: #1976d2; font-weight: 800; font-size: 0.8rem; white-space: nowrap; min-width: 60px;">MAIL</span>
+            <span style="color: #222; font-weight: 600; font-size: 0.95rem;">displays@skku.edu</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+        <div class="contact-footer">ADVANCED DISPLAY QUARTERLY Vol.1 · Spring 2026 · 창간호 © 성균관대학교 첨단디스플레이공학과</div>
+      </section>
+    </div>
+
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+      window.onscroll = function () {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById('progressBar').style.width = scrolled + '%';
+      };
+      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      document.querySelectorAll('.section-wrapper').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+      });
+    </script>
+
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body></html>
